@@ -13,10 +13,9 @@ module.exports = function(game) {
 
   };
 
-  gameState.create = function () {
+  gameState.update = function () {
 
   };
-
 
     return gameState;
 };

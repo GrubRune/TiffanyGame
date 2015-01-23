@@ -27,6 +27,8 @@ var Character = function Character(game) {
         DEAD: 2
     };
 
+    this._currentState = this._state.IDLE;
+
     this._initialize();
 };
 
@@ -48,16 +50,23 @@ p._reset = function() {
 };
 
 /**
+ * Marc rocks function
+ * @private
+ */
+p._myFunction = function() {
+    console.log('marc rockt');
+};
+
+/**
  * Gameloop
  * @param delta
  */
 p.loop = function (delta) {
     console.log(delta);
-
-
     
-    switch (this._state) {
+    switch (this._currentState) {
         case this._state.IDLE:
+            this._myFunction();
             break;
         case this._state.WALK:
             break;

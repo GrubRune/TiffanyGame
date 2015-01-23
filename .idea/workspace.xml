@@ -26,16 +26,16 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/game/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="12" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
+            <state line="17" column="0" selection-start="520" selection-end="520" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/game/states/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="0" selection-start="598" selection-end="598" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+            <state line="23" column="30" selection-start="568" selection-end="568" vertical-scroll-proportion="0.55421686" vertical-offset="0" max-vertical-offset="664">
               <folding />
             </state>
           </provider>
@@ -44,7 +44,7 @@
       <file leaf-file-name="intro.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/game/states/intro.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="24" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0" vertical-offset="32" max-vertical-offset="448">
+            <state line="19" column="21" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
               <folding />
             </state>
           </provider>
@@ -53,16 +53,16 @@
       <file leaf-file-name="Character.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/game/entities/Character.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="0" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0" vertical-offset="440" max-vertical-offset="1184">
+            <state line="54" column="3" selection-start="866" selection-end="866" vertical-scroll-proportion="0.0" vertical-offset="563" max-vertical-offset="1328">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="properties.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/game/properties.js">
+      <file leaf-file-name=".jshintrc" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.jshintrc">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="336">
+            <state line="20" column="10" selection-start="369" selection-end="369" vertical-scroll-proportion="-14.545455" vertical-offset="0" max-vertical-offset="528">
               <folding />
             </state>
           </provider>
@@ -71,16 +71,16 @@
       <file leaf-file-name="preloader.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/game/states/preloader.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="2" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0" vertical-offset="208" max-vertical-offset="320">
+            <state line="12" column="19" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="320">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="14" selection-start="168" selection-end="168" vertical-scroll-proportion="0.124610595" vertical-offset="0" max-vertical-offset="928">
+            <state line="22" column="6" selection-start="635" selection-end="635" vertical-scroll-proportion="-16.0" vertical-offset="0" max-vertical-offset="928">
               <folding />
             </state>
           </provider>
@@ -124,11 +124,12 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/readme.md" />
-        <option value="$PROJECT_DIR$/src/js/game/app.js" />
-        <option value="$PROJECT_DIR$/src/js/game/states/intro.js" />
-        <option value="$PROJECT_DIR$/src/js/game/entities/Character.js" />
-        <option value="$PROJECT_DIR$/src/js/game/states/game.js" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/js/game/states/game.js" />
+        <option value="$PROJECT_DIR$/src/js/game/states/intro.js" />
+        <option value="$PROJECT_DIR$/src/js/game/app.js" />
+        <option value="$PROJECT_DIR$/src/js/game/states/preloader.js" />
+        <option value="$PROJECT_DIR$/src/js/game/entities/Character.js" />
       </list>
     </option>
   </component>
@@ -308,6 +309,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Workspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Workspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Workspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Workspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -315,8 +348,8 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="options.lastSelected" value="editing.templates" />
-    <property name="last_opened_file_path" value="$USER_HOME$/nothing/nca_indigo/Workspace" />
+    <property name="options.lastSelected" value="Settings.JavaScript.Linters.JSHint" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.jshintrc" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
@@ -458,13 +491,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/js/game/properties.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="336">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/game/states/preloader.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="2" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0" vertical-offset="208" max-vertical-offset="320">
@@ -514,20 +540,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/game/properties.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="336">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/game/states/preloader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="2" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="320">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/game/states/boot.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="0" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="752">
@@ -535,37 +547,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/game/states/intro.js">
+    <entry file="file://$PROJECT_DIR$/src/js/game/properties.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="24" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="448">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/game/entities/Character.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0" vertical-offset="440" max-vertical-offset="1184">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/game/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="12" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/game/states/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="598" selection-end="598" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+        <state line="15" column="0" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="336">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="14" selection-start="168" selection-end="168" vertical-scroll-proportion="0.124610595" vertical-offset="0" max-vertical-offset="928">
+        <state line="22" column="6" selection-start="635" selection-end="635" vertical-scroll-proportion="-16.0" vertical-offset="0" max-vertical-offset="928">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.jshintrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="10" selection-start="369" selection-end="369" vertical-scroll-proportion="-14.545455" vertical-offset="0" max-vertical-offset="528">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/game/states/intro.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="21" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/game/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="520" selection-end="520" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/game/states/preloader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="19" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="320">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/game/entities/Character.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="3" selection-start="866" selection-end="866" vertical-scroll-proportion="0.0" vertical-offset="563" max-vertical-offset="1328">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/game/states/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="30" selection-start="568" selection-end="568" vertical-scroll-proportion="0.55421686" vertical-offset="0" max-vertical-offset="664">
           <folding />
         </state>
       </provider>
