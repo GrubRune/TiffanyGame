@@ -54,7 +54,7 @@ p._reset = function() {
  * @private
  */
 p._myFunction = function() {
-    console.log('marc rockt');
+
 };
 
 /**
@@ -62,8 +62,7 @@ p._myFunction = function() {
  * @param delta
  */
 p.loop = function (delta) {
-    console.log(delta);
-    
+
     switch (this._currentState) {
         case this._state.IDLE:
             this._myFunction();

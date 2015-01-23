@@ -1,4 +1,5 @@
 var Character = require('../entities/Character');
+var levels = require('../levels');
 
 module.exports = function(game) {
 
@@ -9,6 +10,8 @@ module.exports = function(game) {
   gameState.create = function () {
     var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
     logo.anchor.setTo(0.5, 0.5);
+
+    console.log(levels);
 
     this._child = new Character(game);
   };
