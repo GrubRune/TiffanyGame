@@ -1,5 +1,5 @@
 {
-  "name": "Tiffany - The drone pilot",
+  "name": "theGame",
   "version": "0.1.0",
   "description": "A game about drones in the modern war against terrorism",
   "main": "build/js/app.min.js",

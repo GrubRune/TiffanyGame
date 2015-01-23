@@ -11,7 +11,6 @@ module.exports = function(game) {
     logo.anchor.setTo(0.5, 0.5);
 
     this._child = new Character(game);
-    console.log(this._child);
   };
 
    /**
