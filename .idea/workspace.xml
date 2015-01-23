@@ -50,10 +50,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="25" selection-start="833" selection-end="833" vertical-scroll-proportion="0.42428786" vertical-offset="261" max-vertical-offset="928">
+            <state line="34" column="25" selection-start="833" selection-end="833" vertical-scroll-proportion="-12.863636" vertical-offset="261" max-vertical-offset="928">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readme.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="32" selection-start="263" selection-end="263" vertical-scroll-proportion="0.09315866" vertical-offset="0" max-vertical-offset="687">
               <folding />
             </state>
           </provider>
@@ -65,6 +74,13 @@
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/readme.md" />
+      </list>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
@@ -336,7 +352,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="25" selection-start="833" selection-end="833" vertical-scroll-proportion="0.42428786" vertical-offset="261" max-vertical-offset="928">
+        <state line="34" column="25" selection-start="833" selection-end="833" vertical-scroll-proportion="-12.863636" vertical-offset="261" max-vertical-offset="928">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="32" selection-start="263" selection-end="263" vertical-scroll-proportion="0.09315866" vertical-offset="0" max-vertical-offset="687">
           <folding />
         </state>
       </provider>
