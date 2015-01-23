@@ -1,16 +1,16 @@
 {
-  "name": "phaser-js-boilerplate",
+  "name": "Tiffany - The drone pilot",
   "version": "0.1.0",
-  "description": "A Grunty Phaser.js SDK",
+  "description": "A game about drones in the modern war against terrorism",
   "main": "build/js/app.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:lukewilde/phaser-js-boilerplate.git"
+    "url": "https://github.com/GrubRune/TiffanyGame.git"
   },
-  "author": "Luke Wilde",
+  "author": "Marc Gruber & Simon Kovatsch",
   "license": "MIT",
   "browser": {
     "lodash": "./node_modules/lodash/dist/lodash.compat.js",
