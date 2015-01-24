@@ -1,5 +1,6 @@
 var Character = require('../entities/Character');
 var levels = require('../levels');
+var Phaser = require('Phaser');
 
 module.exports = function(game) {
 
@@ -10,6 +11,8 @@ module.exports = function(game) {
   gameState.create = function () {
       game.add.sprite(0, 0, 'grid');
       this._child = new Character(game, levels.levelA);
+
+      game.physics.startSystem(Phaser.Physics.ARCADE);
   };
 
    /**

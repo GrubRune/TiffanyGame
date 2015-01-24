@@ -13,7 +13,7 @@ var Phaser = require('Phaser');
  * @constructor
  */
 var Character = function Character(game, map) {
-    Phaser.Sprite.call(this, game, 0, 0, 'character');
+    Phaser.Sprite.call(this, game, 0, 0, 'child');
     game.add.existing(this);
 
     this.game = game;
@@ -25,7 +25,8 @@ var Character = function Character(game, map) {
     this._state = {
         IDLE: 0,
         WALK: 1,
-        DEAD: 2
+        DEAD: 2,
+        WIN: 3
     };
 
     this._curTile = {
@@ -50,8 +51,7 @@ var Character = function Character(game, map) {
      */
     this._moveSpeed = 400;
 
-    this._isVerticallyMoving = false;
-    this._isHorizontallyMoving = false;
+    this._zoomCounter = 0;
 
     this._map = map;
     this._mapSize = map.tileSize;
@@ -66,7 +66,6 @@ var Character = function Character(game, map) {
 
     this._currentState = this._state.IDLE;
 
-
     this._initialize();
 };
 
@@ -78,6 +77,35 @@ p.constructor = Character;
  * @private
  */
 p._initialize = function () {
+
+    // Setup mole graphic
+    this.animations.add('left', [1], 10, true, true);
+    this.animations.add('right', [2], 10, true, true);
+    this.animations.add('front', [3], 10, true, true);
+    this.animations.add('back', [0], 10, true, true);
+    this.animations.add('dead', [5], 10, true, true);
+
+    this.animations.play('front');
+
+
+    this._curTile = {
+        x: 0,
+        y: 0
+    };
+
+    this._nextTile = {
+        x: 0,
+        y: 0
+    };
+
+    this._dir = {
+        x: 0,
+        y: 0
+    };
+
+    this._zoomCounter = 0;
+
+    this.game.world.setBounds(0, 0, 1920, 1920);
     this._findStart();
 };
 
@@ -108,136 +136,122 @@ p._findStart = function () {
     }
 };
 
-/**
- * Input of character
- * @private
- */
-p._input = function () {
-
-    this._currentState = this._state.WALK;
-};
-
 p._checkField = function () {
     var nextY = this._curTile.y;
     var nextX = this._curTile.x;
 
+
+    var storedDir = {x:0, y:0};
+    storedDir.x = this._dir.x;
+    storedDir.y = this._dir.y;
+
     // UP Movement
     if (this._upKey.isDown && this.isOnTile || this._upKey.isDown && this._dir.y > 0) {
-
-        if(this._dir.x !== 0) {
-            return;
-        }
+        this._dir.y = -1;
 
         nextY = this._curTile.y - 1;
 
         // Reverses direction
-        if(this._dir.y > 0 ) {
+        if (this._dir.y > 0) {
             nextY = this._curTile.y;
         }
 
         nextY = nextY < 0 ? 0 : nextY;
 
-        if(this._map.tiles[nextY][this._curTile.x] === 1) {
-            return;
-        }
-
-        if (nextY > 0 || this._map.tiles[nextY][this._curTile.x] !== 1) {
+        if (nextY > 0 && this._map.tiles[nextY][this._curTile.x] !== 1) {
             this._nextTile.y = nextY;
             this._dir.y = -1;
             this.isOnTile = false;
             this._currentState = this._state.WALK;
-            this._isVerticallyMoving = false;
+        }
 
+        if(this._map.tiles[nextY][this._curTile.x] === 8) {
+            this._currentState = this._state.WIN;
+        }
+
+        if(this._map.tiles[nextY][this._curTile.x] === 6) {
+            this._currentState = this._state.DEAD;
         }
     }
 
     // DOWN Movement
-    if (this._downKey.isDown && this.isOnTile || this._downKey.isDown && this._dir.y < 0 ) {
-
-        if(this._dir.x !== 0) {
-            return;
-        }
+    if (this._downKey.isDown && this.isOnTile || this._downKey.isDown && this._dir.y < 0) {
+        this._dir.y = 1;
 
         nextY = this._curTile.y + 1;
 
         // Reverse direction
-        if(this._dir.y < 0) {
+        if (this._dir.y < 0) {
             nextY = this._curTile.y;
         }
 
-        nextY = nextY > this._map.height -1 ? this._map.height -1 : nextY;
+        nextY = nextY > this._map.height - 1 ? this._map.height - 1 : nextY;
 
-        if(this._map.tiles[nextY][this._curTile.x] === 1) {
-            return;
-        }
-
-        if (nextY < this._map.height * this._mapSize || this._map[nextY][this._curTile.x] !== 1) {
+        if (nextY < this._map.height * this._mapSize && this._map.tiles[nextY][this._curTile.x] !== 1) {
             this._nextTile.y = nextY;
             this._dir.y = 1;
             this.isOnTile = false;
             this._currentState = this._state.WALK;
-            this._isVerticallyMoving = false;
+        }
+
+        if(this._map.tiles[this._curTile.y][nextX] === 8) {
+            this._currentState = this._state.WIN;
+        }
+
+        if(this._map.tiles[this._curTile.y][nextX] === 6) {
+            this._currentState = this._state.DEAD;
         }
     }
 
     // LEFT Movement
     if (this._leftKey.isDown && this.isOnTile || this._leftKey.isDown && this._dir.x > 0) {
-
-        if(this._dir.y !== 0) {
-            return;
-        }
+        this._dir.x = -1;
 
         nextX = this._curTile.x - 1;
 
         // if we are right next
-        if(this._dir.x > 0) {
+        if (this._dir.x > 0) {
             nextX = this._curTile.x;
         }
 
         nextX = nextX < 0 ? 0 : nextX;
 
-        if(this._map.tiles[this._curTile.y][nextX] === 1) {
-            return;
-        }
-
-        if (nextX >= 0 || this._map[nextX][this._curTile.y] !== 1) {
+        if (nextX >= 0 && this._map.tiles[this._curTile.y][nextX] !== 1) {
             this._nextTile.x = nextX;
             this._dir.x = -1;
             this.isOnTile = false;
             this._currentState = this._state.WALK;
-            this._isHorizontallyMoving = false;
+        }
+
+        if(this._map.tiles[this._curTile.y][nextX] === 8) {
+            this._currentState = this._state.WIN;
+        }
+
+        if(this._map.tiles[this._curTile.y][nextX] === 6) {
+            this._currentState = this._state.DEAD;
         }
     }
 
     // RIGHT Movement
     if (this._rightKey.isDown && this.isOnTile || this._rightKey.isDown && this._dir.x < 0) {
-
-        if(this._dir.y !== 0) {
-            return;
-        }
+        this._dir.x = 1;
 
         nextX = this._curTile.x + 1;
 
-        // if we are right next
-        if(this._dir.x < 0) {
+        // if we are left next
+        if (this._dir.x < 0) {
             nextX = this._curTile.x;
         }
 
-        nextX = nextX > this._map.width-1 ? this._map.width-1 : nextX;
+        nextX = nextX > this._map.width - 1 ? this._map.width - 1 : nextX;
 
-        if(this._map.tiles[this._curTile.y][nextX] === 1) {
-            return;
-        }
-
-        if (nextX < this._map.width * this._mapSize || this._map[nextX][this._curTile.y] !== 1) {
+        if (nextX < this._map.width * this._mapSize && this._map.tiles[this._curTile.y][nextX] !== 1) {
             this._nextTile.x = nextX;
             this._dir.x = 1;
             this.isOnTile = false;
             this._currentState = this._state.WALK;
-            this._isHorizontallyMoving = false;
         }
     }
-
 };
 
 /**
@@ -248,63 +262,117 @@ p._reset = function () {
 };
 
 /**
+ * Ceck if ahmed is dead
+ * @param y
+ * @param x
+ * @private
+ */
+p._checkDead = function (y,x) {
+
+    if( this._map.tiles[y][x] === 6 ) {
+        this._currentState = this._state.DEAD;
+   }
+   if( this._map.tiles[y][x] === 8 ) {
+        this._currentState = this._state.WIN;
+   }
+};
+
+/**
  * Gameloop
  * @param delta
  */
 p.loop = function (delta) {
 
-    this._checkField();
+    if(this._currentState !== this._state.DEAD && this._currentState !== this._state.WIN ) {
+        this._checkField();
+    }
 
     switch (this._currentState) {
         case this._state.IDLE:
             break;
         case this._state.WALK:
+
             this.y += this._moveSpeed * this._dir.y * delta;
             this.x += this._moveSpeed * this._dir.x * delta;
 
             // up movement
             if (this._dir.y < 0) {
+                this.animations.play('back');
+
                 if (this.y <= this._nextTile.y * this._mapSize) {
                     this.y = this._nextTile.y * this._mapSize;
                     this._curTile.y = this._nextTile.y;
                     this.isOnTile = true;
                     this._dir.y = 0;
+                    this._currentState = this._state.IDLE;
+                    this._checkDead(this._curTile.y , this._curTile.x);
                 }
             }
 
             // down movement
             if (this._dir.y > 0) {
+                this.animations.play('front');
+
                 if (this.y >= this._nextTile.y * this._mapSize) {
                     this.y = this._nextTile.y * this._mapSize;
                     this._curTile.y = this._nextTile.y;
                     this.isOnTile = true;
                     this._dir.y = 0;
+                    this._currentState = this._state.IDLE;
+                    this._checkDead(this._curTile.y , this._curTile.x);
                 }
             }
 
             // left movement
             if (this._dir.x < 0) {
+                this.animations.play('left');
+
                 if (this.x <= this._nextTile.x * this._mapSize) {
                     this.x = this._nextTile.x * this._mapSize;
                     this._curTile.x = this._nextTile.x;
                     this.isOnTile = true;
                     this._dir.x = 0;
+                    this._currentState = this._state.IDLE;
+                    this._checkDead(this._curTile.y , this._curTile.x);
                 }
             }
 
             // left movement
             if (this._dir.x > 0) {
+                this.animations.play('right');
+
                 if (this.x >= this._nextTile.x * this._mapSize) {
                     this.x = this._nextTile.x * this._mapSize;
                     this._curTile.x = this._nextTile.x;
                     this.isOnTile = true;
                     this._dir.x = 0;
+                    this._currentState = this._state.IDLE;
+                    this._checkDead(this._curTile.y , this._curTile.x);
                 }
             }
 
-
             break;
         case this._state.DEAD:
+            this.game.physics.arcade.enable(this);
+
+            // this.game.states.load('game');
+            this.game.camera.follow(this.body);
+
+            this._zoomCounter += (Math.PI/1000) * delta;
+
+            if( this._zoomCounter < Math.PI*0.5) {
+                this.game.camera.scale.x +=  Math.sin(this._zoomCounter);
+                this.game.camera.scale.y +=  Math.sin(this._zoomCounter);
+            }
+
+            if(this.game.camera.scale.x >= 3) {
+                this.game.camera.scale.x = 3;
+                this.game.camera.scale.y = 3;
+            }
+
+            this.animations.play('dead');
+            break;
+        case this._state.WIN:
             break;
     }
 };
