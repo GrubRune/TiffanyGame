@@ -6,6 +6,7 @@
  */
 
 var Phaser = require('Phaser');
+var storage = require('../deadDataBase');
 
 /**
  * Mole constructor
@@ -26,7 +27,8 @@ var Character = function Character(game, map) {
         IDLE: 0,
         WALK: 1,
         DEAD: 2,
-        WIN: 3
+        WIN: 3,
+        ZOOM: 4
     };
 
     this._curTile = {
@@ -87,7 +89,6 @@ p._initialize = function () {
 
     this.animations.play('front');
 
-
     this._curTile = {
         x: 0,
         y: 0
@@ -105,7 +106,10 @@ p._initialize = function () {
 
     this._zoomCounter = 0;
 
+    this.deadSignal = new Phaser.Signal();
+
     this.game.world.setBounds(0, 0, 1920, 1920);
+
     this._findStart();
 };
 
@@ -140,7 +144,6 @@ p._checkField = function () {
     var nextY = this._curTile.y;
     var nextX = this._curTile.x;
 
-
     var storedDir = {x:0, y:0};
     storedDir.x = this._dir.x;
     storedDir.y = this._dir.y;
@@ -168,10 +171,6 @@ p._checkField = function () {
         if(this._map.tiles[nextY][this._curTile.x] === 8) {
             this._currentState = this._state.WIN;
         }
-
-        if(this._map.tiles[nextY][this._curTile.x] === 6) {
-            this._currentState = this._state.DEAD;
-        }
     }
 
     // DOWN Movement
@@ -197,10 +196,6 @@ p._checkField = function () {
         if(this._map.tiles[this._curTile.y][nextX] === 8) {
             this._currentState = this._state.WIN;
         }
-
-        if(this._map.tiles[this._curTile.y][nextX] === 6) {
-            this._currentState = this._state.DEAD;
-        }
     }
 
     // LEFT Movement
@@ -225,10 +220,6 @@ p._checkField = function () {
 
         if(this._map.tiles[this._curTile.y][nextX] === 8) {
             this._currentState = this._state.WIN;
-        }
-
-        if(this._map.tiles[this._curTile.y][nextX] === 6) {
-            this._currentState = this._state.DEAD;
         }
     }
 
@@ -270,11 +261,20 @@ p._reset = function () {
 p._checkDead = function (y,x) {
 
     if( this._map.tiles[y][x] === 6 ) {
+        var d = {dX:x, dY:y};
+        storage.map.push(d);
         this._currentState = this._state.DEAD;
-   }
+        console.log('dead: ' + this._currentState);
+
+    }
+
    if( this._map.tiles[y][x] === 8 ) {
         this._currentState = this._state.WIN;
    }
+};
+
+p.startZoom = function() {
+    this._currentState = this._state.ZOOM;
 };
 
 /**
@@ -283,7 +283,10 @@ p._checkDead = function (y,x) {
  */
 p.loop = function (delta) {
 
-    if(this._currentState !== this._state.DEAD && this._currentState !== this._state.WIN ) {
+    if(this._currentState !== this._state.DEAD &&
+        this._currentState !== this._state.WIN &&
+        this._currentState !== this._state.ZOOM)
+    {
         this._checkField();
     }
 
@@ -353,6 +356,13 @@ p.loop = function (delta) {
 
             break;
         case this._state.DEAD:
+            this.animations.play('dead');
+            this.deadSignal.dispatch();
+            this._currentState = this._state.WIN;
+            break;
+        case this._state.WIN:
+            break;
+        case this._state.ZOOM:
             this.game.physics.arcade.enable(this);
 
             // this.game.states.load('game');
@@ -369,10 +379,6 @@ p.loop = function (delta) {
                 this.game.camera.scale.x = 3;
                 this.game.camera.scale.y = 3;
             }
-
-            this.animations.play('dead');
-            break;
-        case this._state.WIN:
             break;
     }
 };
