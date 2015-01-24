@@ -48,7 +48,10 @@ var Character = function Character(game, map) {
      * @type {number}
      * @private
      */
-    this._moveSpeed = 20;
+    this._moveSpeed = 400;
+
+    this._isVerticallyMoving = false;
+    this._isHorizontallyMoving = false;
 
     this._map = map;
     this._mapSize = map.tileSize;
@@ -75,7 +78,6 @@ p.constructor = Character;
  * @private
  */
 p._initialize = function () {
-
     this._findStart();
 };
 
@@ -121,22 +123,52 @@ p._checkField = function () {
 
     // UP Movement
     if (this._upKey.isDown && this.isOnTile || this._upKey.isDown && this._dir.y > 0) {
+
+        if(this._dir.x !== 0) {
+            return;
+        }
+
         nextY = this._curTile.y - 1;
-        if (nextY >= 0 || this._map[nextY][this._curTile.x] !== 1) {
+
+        // Reverses direction
+        if(this._dir.y > 0 ) {
+            nextY = this._curTile.y;
+        }
+
+        nextY = nextY < 0 ? 0 : nextY;
+
+        if(this._map.tiles[nextY][this._curTile.x] === 1) {
+            return;
+        }
+
+        if (nextY > 0 || this._map.tiles[nextY][this._curTile.x] !== 1) {
             this._nextTile.y = nextY;
             this._dir.y = -1;
             this.isOnTile = false;
             this._currentState = this._state.WALK;
+            this._isVerticallyMoving = false;
+
         }
     }
 
     // DOWN Movement
-    if (this._downKey.isDown && this.isOnTile || this._downKey.isDown && this._dir.y < 0) {
+    if (this._downKey.isDown && this.isOnTile || this._downKey.isDown && this._dir.y < 0 ) {
+
+        if(this._dir.x !== 0) {
+            return;
+        }
+
         nextY = this._curTile.y + 1;
 
-        // if we are moving up the next tile will actually be the current
+        // Reverse direction
         if(this._dir.y < 0) {
-          nextY = this._curTile.y;
+            nextY = this._curTile.y;
+        }
+
+        nextY = nextY > this._map.height -1 ? this._map.height -1 : nextY;
+
+        if(this._map.tiles[nextY][this._curTile.x] === 1) {
+            return;
         }
 
         if (nextY < this._map.height * this._mapSize || this._map[nextY][this._curTile.x] !== 1) {
@@ -144,11 +176,17 @@ p._checkField = function () {
             this._dir.y = 1;
             this.isOnTile = false;
             this._currentState = this._state.WALK;
+            this._isVerticallyMoving = false;
         }
     }
 
     // LEFT Movement
     if (this._leftKey.isDown && this.isOnTile || this._leftKey.isDown && this._dir.x > 0) {
+
+        if(this._dir.y !== 0) {
+            return;
+        }
+
         nextX = this._curTile.x - 1;
 
         // if we are right next
@@ -156,16 +194,28 @@ p._checkField = function () {
             nextX = this._curTile.x;
         }
 
-        if (nextX >= 0  || this._map[nextX][this._curTile.y] !== 1) {
+        nextX = nextX < 0 ? 0 : nextX;
+
+        if(this._map.tiles[this._curTile.y][nextX] === 1) {
+            return;
+        }
+
+        if (nextX >= 0 || this._map[nextX][this._curTile.y] !== 1) {
             this._nextTile.x = nextX;
             this._dir.x = -1;
             this.isOnTile = false;
             this._currentState = this._state.WALK;
+            this._isHorizontallyMoving = false;
         }
     }
 
     // RIGHT Movement
     if (this._rightKey.isDown && this.isOnTile || this._rightKey.isDown && this._dir.x < 0) {
+
+        if(this._dir.y !== 0) {
+            return;
+        }
+
         nextX = this._curTile.x + 1;
 
         // if we are right next
@@ -173,11 +223,18 @@ p._checkField = function () {
             nextX = this._curTile.x;
         }
 
+        nextX = nextX > this._map.width-1 ? this._map.width-1 : nextX;
+
+        if(this._map.tiles[this._curTile.y][nextX] === 1) {
+            return;
+        }
+
         if (nextX < this._map.width * this._mapSize || this._map[nextX][this._curTile.y] !== 1) {
             this._nextTile.x = nextX;
             this._dir.x = 1;
             this.isOnTile = false;
             this._currentState = this._state.WALK;
+            this._isHorizontallyMoving = false;
         }
     }
 
@@ -207,33 +264,44 @@ p.loop = function (delta) {
 
             // up movement
             if (this._dir.y < 0) {
-
                 if (this.y <= this._nextTile.y * this._mapSize) {
                     this.y = this._nextTile.y * this._mapSize;
                     this._curTile.y = this._nextTile.y;
                     this.isOnTile = true;
+                    this._dir.y = 0;
                 }
             }
 
             // down movement
             if (this._dir.y > 0) {
-
                 if (this.y >= this._nextTile.y * this._mapSize) {
                     this.y = this._nextTile.y * this._mapSize;
                     this._curTile.y = this._nextTile.y;
                     this.isOnTile = true;
+                    this._dir.y = 0;
                 }
             }
 
             // left movement
             if (this._dir.x < 0) {
-
                 if (this.x <= this._nextTile.x * this._mapSize) {
                     this.x = this._nextTile.x * this._mapSize;
                     this._curTile.x = this._nextTile.x;
                     this.isOnTile = true;
+                    this._dir.x = 0;
                 }
             }
+
+            // left movement
+            if (this._dir.x > 0) {
+                if (this.x >= this._nextTile.x * this._mapSize) {
+                    this.x = this._nextTile.x * this._mapSize;
+                    this._curTile.x = this._nextTile.x;
+                    this.isOnTile = true;
+                    this._dir.x = 0;
+                }
+            }
+
 
             break;
         case this._state.DEAD:
