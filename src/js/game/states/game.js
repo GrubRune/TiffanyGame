@@ -8,6 +8,7 @@ module.exports = function(game) {
   var lastUpdate = Date.now();
 
   gameState.create = function () {
+      game.add.sprite(0, 0, 'grid');
       this._child = new Character(game, levels.levelA);
   };
 

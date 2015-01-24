@@ -117,10 +117,9 @@ p._input = function () {
 
 p._checkField = function () {
     var nextY = this._curTile.y;
+    var nextX = this._curTile.x;
 
-    console.log('dir: ' + this._dir.y);
-
-    // char wants to move up
+    // UP Movement
     if (this._upKey.isDown && this.isOnTile || this._upKey.isDown && this._dir.y > 0) {
         nextY = this._curTile.y - 1;
         if (nextY >= 0 || this._map[nextY][this._curTile.x] !== 1) {
@@ -131,12 +130,52 @@ p._checkField = function () {
         }
     }
 
+    // DOWN Movement
     if (this._downKey.isDown && this.isOnTile || this._downKey.isDown && this._dir.y < 0) {
         nextY = this._curTile.y + 1;
+
+        // if we are moving up the next tile will actually be the current
+        if(this._dir.y < 0) {
+          nextY = this._curTile.y;
+        }
 
         if (nextY < this._map.height * this._mapSize || this._map[nextY][this._curTile.x] !== 1) {
             this._nextTile.y = nextY;
             this._dir.y = 1;
+            this.isOnTile = false;
+            this._currentState = this._state.WALK;
+        }
+    }
+
+    // LEFT Movement
+    if (this._leftKey.isDown && this.isOnTile || this._leftKey.isDown && this._dir.x > 0) {
+        nextX = this._curTile.x - 1;
+
+        // if we are right next
+        if(this._dir.x > 0) {
+            nextX = this._curTile.x;
+        }
+
+        if (nextX >= 0  || this._map[nextX][this._curTile.y] !== 1) {
+            this._nextTile.x = nextX;
+            this._dir.x = -1;
+            this.isOnTile = false;
+            this._currentState = this._state.WALK;
+        }
+    }
+
+    // RIGHT Movement
+    if (this._rightKey.isDown && this.isOnTile || this._rightKey.isDown && this._dir.x < 0) {
+        nextX = this._curTile.x + 1;
+
+        // if we are right next
+        if(this._dir.x < 0) {
+            nextX = this._curTile.x;
+        }
+
+        if (nextX < this._map.width * this._mapSize || this._map[nextX][this._curTile.y] !== 1) {
+            this._nextTile.x = nextX;
+            this._dir.x = 1;
             this.isOnTile = false;
             this._currentState = this._state.WALK;
         }
@@ -182,6 +221,16 @@ p.loop = function (delta) {
                 if (this.y >= this._nextTile.y * this._mapSize) {
                     this.y = this._nextTile.y * this._mapSize;
                     this._curTile.y = this._nextTile.y;
+                    this.isOnTile = true;
+                }
+            }
+
+            // left movement
+            if (this._dir.x < 0) {
+
+                if (this.x <= this._nextTile.x * this._mapSize) {
+                    this.x = this._nextTile.x * this._mapSize;
+                    this._curTile.x = this._nextTile.x;
                     this.isOnTile = true;
                 }
             }
