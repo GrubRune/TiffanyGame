@@ -86,6 +86,7 @@ p._initialize = function () {
     this.animations.add('front', [3], 10, true, true);
     this.animations.add('back', [0], 10, true, true);
     this.animations.add('dead', [5], 10, true, true);
+    this.animations.add('win', [6,7], 10, true, true);
 
     this.animations.play('front');
 
@@ -107,6 +108,9 @@ p._initialize = function () {
     this._zoomCounter = 0;
 
     this.deadSignal = new Phaser.Signal();
+
+    this._stepsAudio = this.game.add.audio('steps');
+    this._stepsAudio.addMarker('step01', 0, 0.2);
 
     this.game.world.setBounds(0, 0, 1920, 1920);
 
@@ -264,8 +268,6 @@ p._checkDead = function (y,x) {
         var d = {dX:x, dY:y};
         storage.map.push(d);
         this._currentState = this._state.DEAD;
-        console.log('dead: ' + this._currentState);
-
     }
 
    if( this._map.tiles[y][x] === 8 ) {
@@ -285,6 +287,7 @@ p.loop = function (delta) {
 
     if(this._currentState !== this._state.DEAD &&
         this._currentState !== this._state.WIN &&
+        this._currentState !== -1 &&
         this._currentState !== this._state.ZOOM)
     {
         this._checkField();
@@ -294,6 +297,10 @@ p.loop = function (delta) {
         case this._state.IDLE:
             break;
         case this._state.WALK:
+
+            if(!this._stepsAudio.isPlaying) {
+                this._stepsAudio.play('step01');
+            }
 
             this.y += this._moveSpeed * this._dir.y * delta;
             this.x += this._moveSpeed * this._dir.x * delta;
@@ -358,9 +365,10 @@ p.loop = function (delta) {
         case this._state.DEAD:
             this.animations.play('dead');
             this.deadSignal.dispatch();
-            this._currentState = this._state.WIN;
+            this._currentState = -1;
             break;
         case this._state.WIN:
+            this.animations.play('win');
             break;
         case this._state.ZOOM:
             this.game.physics.arcade.enable(this);
