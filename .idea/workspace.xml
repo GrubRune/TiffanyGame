@@ -26,34 +26,59 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/game/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="520" selection-end="520" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
+            <state line="9" column="39" selection-start="328" selection-end="328" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="game.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/game/states/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="30" selection-start="568" selection-end="568" vertical-scroll-proportion="0.55421686" vertical-offset="0" max-vertical-offset="664">
+            <state line="8" column="0" selection-start="175" selection-end="175" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="levels.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/game/levels.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="60" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0" vertical-offset="184" max-vertical-offset="848">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="character.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/images/character.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="intro.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/game/states/intro.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="21" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
+            <state line="16" column="0" selection-start="246" selection-end="246" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="400">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Character.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="preloader.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/game/states/preloader.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="4" selection-start="309" selection-end="309" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="352">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Character.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/game/entities/Character.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="3" selection-start="866" selection-end="866" vertical-scroll-proportion="0.0" vertical-offset="563" max-vertical-offset="1328">
+            <state line="128" column="9" selection-start="2608" selection-end="2608" vertical-scroll-proportion="0.45783132" vertical-offset="1744" max-vertical-offset="5072">
               <folding />
             </state>
           </provider>
@@ -63,33 +88,6 @@
         <entry file="file://$PROJECT_DIR$/.jshintrc">
           <provider selected="true" editor-type-id="text-editor">
             <state line="20" column="10" selection-start="369" selection-end="369" vertical-scroll-proportion="-14.545455" vertical-offset="0" max-vertical-offset="528">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="preloader.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/game/states/preloader.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="19" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="320">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="6" selection-start="635" selection-end="635" vertical-scroll-proportion="-16.0" vertical-offset="0" max-vertical-offset="928">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gruntfile.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gruntfile.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="61" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="3872">
               <folding />
             </state>
           </provider>
@@ -125,17 +123,18 @@
       <list>
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/js/game/states/game.js" />
-        <option value="$PROJECT_DIR$/src/js/game/states/intro.js" />
         <option value="$PROJECT_DIR$/src/js/game/app.js" />
+        <option value="$PROJECT_DIR$/src/js/game/states/intro.js" />
         <option value="$PROJECT_DIR$/src/js/game/states/preloader.js" />
+        <option value="$PROJECT_DIR$/src/js/game/states/game.js" />
+        <option value="$PROJECT_DIR$/src/js/game/levels.js" />
         <option value="$PROJECT_DIR$/src/js/game/entities/Character.js" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="20" />
+    <option name="x" value="169" />
     <option name="y" value="22" />
     <option name="width" value="1400" />
     <option name="height" value="835" />
@@ -455,7 +454,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="20" y="22" width="1400" height="835" extended-state="0" />
+    <frame x="169" y="22" width="1400" height="835" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -491,20 +490,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/js/game/states/preloader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="2" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0" vertical-offset="208" max-vertical-offset="320">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="62" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="48" max-vertical-offset="928">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gruntfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="61" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="3872">
@@ -561,6 +546,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/game/states/intro.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="246" selection-end="246" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="400">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/images/character.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.jshintrc">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="10" selection-start="369" selection-end="369" vertical-scroll-proportion="-14.545455" vertical-offset="0" max-vertical-offset="528">
@@ -568,37 +565,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/game/states/intro.js">
+    <entry file="file://$PROJECT_DIR$/src/js/game/states/preloader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="21" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
+        <state line="8" column="4" selection-start="309" selection-end="309" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="352">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/game/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="520" selection-end="520" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/game/states/preloader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="19" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="320">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/game/entities/Character.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="3" selection-start="866" selection-end="866" vertical-scroll-proportion="0.0" vertical-offset="563" max-vertical-offset="1328">
+        <state line="9" column="39" selection-start="328" selection-end="328" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/game/states/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="30" selection-start="568" selection-end="568" vertical-scroll-proportion="0.55421686" vertical-offset="0" max-vertical-offset="664">
+        <state line="8" column="0" selection-start="175" selection-end="175" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/game/levels.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="60" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0" vertical-offset="184" max-vertical-offset="848">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/game/entities/Character.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="128" column="9" selection-start="2608" selection-end="2608" vertical-scroll-proportion="0.45783132" vertical-offset="1744" max-vertical-offset="5072">
           <folding />
         </state>
       </provider>
