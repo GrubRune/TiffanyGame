@@ -112,6 +112,9 @@ p._initialize = function () {
     this._stepsAudio = this.game.add.audio('steps');
     this._stepsAudio.addMarker('step01', 0, 0.2);
 
+    this._droneAudio = this.game.add.audio('drone');
+    this._droneAudio.addMarker('droneloop', 0, 2.5);
+
     this.game.world.setBounds(0, 0, 1920, 1920);
 
     this._findStart();
@@ -284,6 +287,10 @@ p.startZoom = function() {
  * @param delta
  */
 p.loop = function (delta) {
+
+    if(!this._droneAudio.isPlaying) {
+        this._droneAudio.play('droneloop');
+    }
 
     if(this._currentState !== this._state.DEAD &&
         this._currentState !== this._state.WIN &&

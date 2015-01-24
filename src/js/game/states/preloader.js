@@ -9,12 +9,15 @@ module.exports = function(game) {
     game.load.image('message', 'images/message.png#grunt-cache-bust');
     game.load.image('intro', 'images/introScreen.png#grunt-cache-bust');
 
+    game.load.image('drone', 'images/droneImage.png#grunt-cache-bust');
+
     game.load.image('ahmedDead', 'images/ahmedDead.png#grunt-cache-bust');
 
     game.load.atlas( 'child', 'images/ahmed.png', 'images/ahmed.json');
 
     game.load.audio('explosion', 'audio/explosion.ogg');
     game.load.audio('steps', 'audio/steps.mp3');
+    game.load.audio('drone', 'audio/droneSound.mp3');
   };
 
   preloader.create = function () {
