@@ -61,6 +61,9 @@ var Character = function Character(game, map) {
     this._mapSize = map.tileSize;
     this.isOnTile = false;
 
+    this._speechBubble = game.add.sprite(40 * 14, 100, 'speechBubble');
+    this._speechBubble.alpha = 0;
+
     this._upKey = this.game.input.keyboard.addKey(Phaser.Keyboard.UP);
     this._downKey = this.game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
     this._leftKey = this.game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
@@ -118,6 +121,9 @@ p._initialize = function () {
     this._droneAudio.addMarker('droneloop', 0, 2.5);
 
     this.game.world.setBounds(0, 0, 1920, 1920);
+
+
+    this._winTimer  = Date.now();
 
     this._findStart();
 };
@@ -276,7 +282,8 @@ p._checkDead = function (y,x) {
     }
 
    if( this._map.tiles[y][x] === 8 ) {
-        this._currentState = this._state.WIN;
+       this._currentState = this._state.WIN;
+       this._winTimer = Date.now()  + 1000;
    }
 };
 
@@ -380,10 +387,18 @@ p.loop = function (delta) {
             break;
         case this._state.WIN:
             this.animations.play('win');
+
+            this._speechBubble.alpha = 1;
+
+            if(Date.now() > this._winTimer) {
+                storage.map = [];
+                this.game.state.start('intro');
+            }
+
             break;
         case this._state.SCARED:
-            //TODO: add scared image
-            // this.game.camera.x +=
+            this.game.camera.x =  this.game.rnd.between(0, 10.0);
+            this.game.camera.y =  this.game.rnd.between(0, 10.0);
             break;
         case this._state.DEADDEAD:
             this.animations.play('dead');

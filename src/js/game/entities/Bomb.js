@@ -84,6 +84,9 @@ var Bomb = function Bomb(game, startX, startY, targetX, targetY, rotation) {
 
     this.bombSignal = new Phaser.Signal();
 
+    this._bombAudio = this.game.add.audio('bomb');
+    this._bombAudio.addMarker('flyingBomb', 0, 1.0);
+
     this._initialize();
 
 };
@@ -105,7 +108,8 @@ p._initialize = function () {
  * @private
  */
 p._setAtStartPosition = function () {
-   
+    this._bombAudio.play('flyingBomb');
+
    this.x = this._start.x;
    this.y = this._start.y;
 

@@ -14,7 +14,8 @@ module.exports = function(game) {
   gameState.create = function () {
       game.stage.backgroundColor = '#FFFFFF';
 
-      game.add.sprite(0, 0, 'grid');
+      game.add.sprite(0, 0, 'base');
+
 
       this._game = game;
 
@@ -51,6 +52,15 @@ module.exports = function(game) {
 
       this._drone = new Drone(game, levels.levelA);
       this._game._bomblist = [];
+
+      this._school = game.add.sprite(0, 0, 'school');
+      this._school.x = 40 * 18;
+      this._school.y = 4;
+
+      this._school.animations.add('schoolAnim', [0,1,2], 12, true, true);
+      this._school.animations.play('schoolAnim');
+
+      this.bomb = undefined;
 
       game.physics.startSystem(Phaser.Physics.ARCADE);
   };
@@ -128,15 +138,21 @@ module.exports = function(game) {
     gameState._onBombImpact = function() {
          this.sowMessage = true;
          this.doesFlash = true;
+
+        if(typeof this.bomb !== 'undefined') {
+            this.bomb.alpha = 0;
+        }
+
          this._child._currentState = 6;
          this._explosionAudio.play('explode');
     };
 
     // instantiate a bomb and insert into update List
     gameState.instantiateBomb = function (startX, startY, targetX, targetY, rotation) {
-        var bomb = new Bomb(game, startX, startY, targetX, targetY, rotation);
-        bomb.bombSignal.add(this._onBombImpact, this);
-        this._game._bomblist.push(bomb);
+        this.bomb = new Bomb(game, startX, startY, targetX, targetY, rotation);
+        this.bomb.alpha = 1;
+        this.bomb.bombSignal.add(this._onBombImpact, this);
+        this._game._bomblist.push(this.bomb);
     };
 
   return gameState;
