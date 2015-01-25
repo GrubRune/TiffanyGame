@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/GrubRune/TiffanyGame.git"
   },
-  "author": "Marc Gruber & Simon Kovatsch",
+  "author": "Developemon",
   "license": "MIT",
   "browser": {
     "lodash": "./node_modules/lodash/dist/lodash.compat.js",
