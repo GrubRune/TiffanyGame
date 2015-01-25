@@ -28,7 +28,9 @@ var Character = function Character(game, map) {
         WALK: 1,
         DEAD: 2,
         WIN: 3,
-        ZOOM: 4
+        ZOOM: 4,
+        SCARED: 5,
+        DEADDEAD: 6
     };
 
     this._curTile = {
@@ -295,10 +297,14 @@ p.loop = function (delta) {
     if(this._currentState !== this._state.DEAD &&
         this._currentState !== this._state.WIN &&
         this._currentState !== -1 &&
-        this._currentState !== this._state.ZOOM)
+        this._currentState !== this._state.ZOOM &&
+        this._currentState !== this._state.SCARED
+        )
     {
         this._checkField();
     }
+
+    console.log(this._currentState);
 
     switch (this._currentState) {
         case this._state.IDLE:
@@ -367,15 +373,21 @@ p.loop = function (delta) {
                     this._checkDead(this._curTile.y , this._curTile.x);
                 }
             }
-
             break;
         case this._state.DEAD:
-            this.animations.play('dead');
             this.deadSignal.dispatch();
-            this._currentState = -1;
+            this._currentState = this._state.SCARED;
             break;
         case this._state.WIN:
             this.animations.play('win');
+            break;
+        case this._state.SCARED:
+            //TODO: add scared image
+            // this.game.camera.x +=
+            break;
+        case this._state.DEADDEAD:
+            this.animations.play('dead');
+            this._currentState = -1;
             break;
         case this._state.ZOOM:
             this.game.physics.arcade.enable(this);
@@ -394,6 +406,7 @@ p.loop = function (delta) {
                 this.game.camera.scale.x = 3;
                 this.game.camera.scale.y = 3;
             }
+
             break;
     }
 };

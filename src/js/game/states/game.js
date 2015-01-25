@@ -2,6 +2,8 @@ var Character = require('../entities/Character');
 var levels = require('../levels');
 var Phaser = require('Phaser');
 var storage = require('../deadDataBase');
+var Bomb = require('../entities/Bomb');
+var Drone = require('../entities/Drone');
 
 module.exports = function(game) {
 
@@ -47,6 +49,9 @@ module.exports = function(game) {
       this.message.y = 300;
       this.message.alpha = 0;
 
+      this._drone = new Drone(game, levels.levelA);
+      this._game._bomblist = [];
+
       game.physics.startSystem(Phaser.Physics.ARCADE);
   };
 
@@ -58,9 +63,7 @@ module.exports = function(game) {
   };
 
   gameState._onPlayerDeadSignal = function() {
-      this.sowMessage = true;
-      this.doesFlash = true;
-      this._explosionAudio.play('explode');
+     this.instantiateBomb(this._drone.x , this._drone.y, this._child.x, this._child.y , this._drone.rotation );
   };
 
    /**
@@ -98,7 +101,43 @@ module.exports = function(game) {
       }
 
       this._child.loop(delta);
+
+
+      // Drone and bomb
+
+      this._drone.loop(delta);
+
+      // update all bomb in bomblist
+      // add to remove list if at target
+      var removeList = [];
+      for(var i=0; i< this._game._bomblist.length; i++){
+
+          this._game._bomblist[i].loop(delta);
+
+          if(this._game._bomblist[i]._remove()){
+              removeList.push(game._bomblist[i]);
+          }
+      }
+
+      // remove inactive from bombList
+      for(var t=0; t< removeList.length; t++){
+          this._game._bomblist.splice(game._bomblist.indexOf(removeList[t]),1);
+      }
   };
+
+    gameState._onBombImpact = function() {
+         this.sowMessage = true;
+         this.doesFlash = true;
+         this._child._currentState = 6;
+         this._explosionAudio.play('explode');
+    };
+
+    // instantiate a bomb and insert into update List
+    gameState.instantiateBomb = function (startX, startY, targetX, targetY, rotation) {
+        var bomb = new Bomb(game, startX, startY, targetX, targetY, rotation);
+        bomb.bombSignal.add(this._onBombImpact, this);
+        this._game._bomblist.push(bomb);
+    };
 
   return gameState;
 };

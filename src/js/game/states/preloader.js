@@ -9,7 +9,12 @@ module.exports = function(game) {
     game.load.image('message', 'images/message.png#grunt-cache-bust');
     game.load.image('intro', 'images/introScreen.png#grunt-cache-bust');
 
-    game.load.image('drone', 'images/droneImage.png#grunt-cache-bust');
+    game.load.image('bomb', 'images/bomb.png#grunt-cache-bust');
+    game.load.image('drone', 'images/drone.png#grunt-cache-bust');
+
+    game.load.image('cloud', 'images/cloud.png#grunt-cache-bust');
+
+    game.load.image('droneSide', 'images/droneImage.png#grunt-cache-bust');
 
     game.load.image('ahmedDead', 'images/ahmedDead.png#grunt-cache-bust');
 

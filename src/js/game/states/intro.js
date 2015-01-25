@@ -12,8 +12,16 @@ module.exports = function(game) {
 
   gameState.create = function () {
       this._introMessage = game.add.sprite(0, 0, 'intro');
-      this._drone = game.add.sprite(0, 0, 'drone');
 
+      this._clouds = [];
+      this.NUM_CLOUDS = 20;
+
+      for (var i = 0; i < this.NUM_CLOUDS; i++) {
+          var cloud = game.add.sprite(118*i, 128, 'cloud');
+          this._clouds.push(cloud);
+      }
+
+      this._drone = game.add.sprite(0, 0, 'droneSide');
       this._drone.anchor.x = 0.5;
       this._drone.anchor.y = 0.5;
 
@@ -28,8 +36,18 @@ module.exports = function(game) {
   };
 
   gameState.update = function () {
+
       if(this._spaceKey.isDown) {
           game.state.start('game');
+      }
+
+      for (var i = 0; i < this._clouds.length; i++) {
+          var cloud = this._clouds[i];
+          cloud.x += 3.0;
+
+          if(cloud.x >= 918) {
+              cloud.x = -112;
+          }
       }
 
       this.counter += Math.PI*0.02;
