@@ -13,7 +13,7 @@ A statement produced at a gamejam in 2015
 
 Ahmed wants to go to school (+18)
 
-This game is more of a statement than a game that is supposed to be fun.
+This game is more of a statement than a game.
 Its target is to raise awareness and inform about how the so called precise war drones used
 in the modern war against terrorism. Against the statements of politicians and the army -
 they in fact DO cause terrible collateral damages.

@@ -12,7 +12,7 @@ module.exports = function(game) {
   var lastUpdate = Date.now();
 
   gameState.create = function () {
-      game.stage.backgroundColor = '#FFFFFF';
+      game.stage.backgroundColor = '#00000';
 
       game.add.sprite(0, 0, 'base');
 

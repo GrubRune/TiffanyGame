@@ -8,7 +8,7 @@ module.exports = function(game) {
     game.load.image('character', 'images/character.png#grunt-cache-bust');
     game.load.image('message', 'images/message.png#grunt-cache-bust');
     game.load.image('intro', 'images/introScreen.png#grunt-cache-bust');
-    game.load.image('base', 'images/Tiffany_map.png#grunt-cache-bust');
+    game.load.image('base', 'images/Grid_Village.png#grunt-cache-bust');
     game.load.image('speechBubble', 'images/speechBubble.png#grunt-cache-bust');
 
 
