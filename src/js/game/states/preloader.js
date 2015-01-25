@@ -21,6 +21,16 @@ module.exports = function(game) {
 
     game.load.image('ahmedDead', 'images/ahmedDead.png#grunt-cache-bust');
 
+    game.load.image('man01', 'images/man01.png#grunt-cache-bust');
+    game.load.image('man02', 'images/man02.png#grunt-cache-bust');
+    game.load.image('man03', 'images/man03.png#grunt-cache-bust');
+    game.load.image('man04', 'images/man04.png#grunt-cache-bust');
+
+    game.load.image('woman01', 'images/woman01.png#grunt-cache-bust');
+    game.load.image('woman02', 'images/woman02.png#grunt-cache-bust');
+    game.load.image('woman03', 'images/woman03.png#grunt-cache-bust');
+    game.load.image('woman04', 'images/woman04.png#grunt-cache-bust');
+
     game.load.atlas( 'child', 'images/ahmed.png', 'images/ahmed.json');
     game.load.atlas( 'school', 'images/school.png', 'images/school.json');
 

@@ -19,6 +19,30 @@ module.exports = function(game) {
 
       this._game = game;
 
+
+      this._npcSpeed = 50;
+      this._npcListLeft = [];
+      this._npcString = ['man01','man02','man03','man04','woman01','woman02','woman03','woman04'];
+      this._npcDirs = [{x: -1, y: 0}, {x: 1, y: 0}, {x: 0, y: -1}, {x: 0, y: 1}];
+
+
+      for (var i = 0; i < 12; i++) {
+
+          var pos = gameState._getRandomPosition();
+          var npcString = this._npcString[this._game.rnd.integerInRange(0,7)];
+          var npc = game.add.sprite( pos.x , pos.y, npcString);
+
+          var dir =  this._npcDirs[this._game.rnd.integerInRange(0,3)];// this._npcDirs[ Math.round(Math.random() * this._npcDirs.length) ];
+          
+          npc.dirX = dir.x;
+          npc.dirY = dir.y;
+          if(npc.dirX != 0){
+            npc.scale.x = -dir.x;
+          }
+          
+          this._npcListLeft.push(npc);
+      }
+
       // Flash
       this._flashCounter = 0;
       this.flash = game.add.graphics(0, 0);
@@ -63,6 +87,15 @@ module.exports = function(game) {
       this.bomb = undefined;
 
       game.physics.startSystem(Phaser.Physics.ARCADE);
+
+      
+
+  };
+
+  gameState._getRandomPosition = function() {
+      var rdmX = (Math.round(Math.random()*6)*3+2)*40;
+      var rdmY = (Math.round(Math.random()*5)*3+2)*40;
+      return {x: rdmX, y: rdmY };
   };
 
   gameState._placeBodies = function() {
@@ -133,6 +166,25 @@ module.exports = function(game) {
       for(var t=0; t< removeList.length; t++){
           this._game._bomblist.splice(game._bomblist.indexOf(removeList[t]),1);
       }
+
+
+      // npc update
+      // walk left
+      for(var i=0; i< this._npcListLeft.length; i++){
+        
+        this._npcListLeft[i].x -= this._npcListLeft[i].dirX * this._npcSpeed * delta;
+        this._npcListLeft[i].y -= this._npcListLeft[i].dirY * this._npcSpeed * delta;
+        
+        if(this._npcListLeft[i].x < 0 || this._npcListLeft[i].x > 800){
+
+          this._npcListLeft[i].dirX *= -1;
+          this._npcListLeft[i].scale.x *= -1;
+        }else if(this._npcListLeft[i].y < 0 || this._npcListLeft[i].y > 600){
+
+          this._npcListLeft[i].dirY *= -1;
+        }
+      }
+     
   };
 
     gameState._onBombImpact = function() {

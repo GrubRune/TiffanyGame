@@ -311,7 +311,7 @@ p.loop = function (delta) {
         this._checkField();
     }
 
-    console.log(this._currentState);
+    //console.log(this._currentState);
 
     switch (this._currentState) {
         case this._state.IDLE:
